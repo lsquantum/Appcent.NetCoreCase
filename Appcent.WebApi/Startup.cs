@@ -1,6 +1,8 @@
 using Appcent.Application;
+using Appcent.Application.Interfaces;
 using Appcent.Infrastructure;
 using Appcent.WebApi.Extensions;
+using Appcent.WebApi.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -24,8 +26,6 @@ namespace Appcent.WebApi
             _config = configuration;
         }
 
-        public IConfiguration Configuration { get; }
-
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -34,7 +34,7 @@ namespace Appcent.WebApi
             services.AddSwaggerExtension();
             services.AddControllers();
             services.AddControllersExtension();
-            //services.AddScoped<IAuthenticatedUserService, AuthenticatedUserService>();
+            services.AddScoped<IAuthenticatedUserService, AuthenticatedUserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
