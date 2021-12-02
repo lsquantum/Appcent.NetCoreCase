@@ -24,7 +24,7 @@ namespace Appcent.Infrastructure.Repositories
         }
         public async Task<IList<T>> GetAllAsync()
         {
-            var queryResult = await _bucket.Cluster.QueryAsync<T>($"SELECT t.* FROM `default` t WHERE t.type='{nameof(T)}'");
+            var queryResult = await _bucket.Cluster.QueryAsync<T>($"SELECT t.* FROM `default` t WHERE t.type='{typeof(T).Name}'");
             IAsyncEnumerable<T> rows = queryResult.Rows;
             List<T> data = new();
             await foreach (var row in rows) {

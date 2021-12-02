@@ -24,9 +24,9 @@ namespace Appcent.Application.Features.ToDoLists.Queries.GetToDoListById
             }
             public async Task<Response<ToDoList>> Handle(GetToDoListByIdQuery query, CancellationToken cancellationToken)
             {
-                var ToDoList = await _toDoListRepository.GetByIdAsync(query.Key);
-                if (ToDoList == null) throw new ApiException($"ToDoList Not with Key:{query.Key} Found.");
-                return new Response<ToDoList>(ToDoList);
+                var toDoList = await _toDoListRepository.GetByIdAsync(query.Key);
+                if (toDoList == null) throw new ApiException($"ToDoList Not with Key:{query.Key} Found.");
+                return new Response<ToDoList>(toDoList);
             }
         }
     }

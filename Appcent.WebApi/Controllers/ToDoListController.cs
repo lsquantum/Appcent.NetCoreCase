@@ -22,7 +22,7 @@ namespace Appcent.WebApi.Controllers
         }
 
         // GET api/<controller>/5
-        [HttpGet("{id}")]
+        [HttpGet("{key}")]
         public async Task<IActionResult> Get(string key)
         {
             return Ok(await Mediator.Send(new GetToDoListByIdQuery { Key = key }));
@@ -36,7 +36,7 @@ namespace Appcent.WebApi.Controllers
         }
 
         // PUT api/<controller>/5
-        [HttpPut("{id}")]
+        [HttpPut("{key}")]
         public async Task<IActionResult> Put(string key, UpdateToDoListCommand command)
         {
             if (string.IsNullOrEmpty(key))
@@ -46,7 +46,7 @@ namespace Appcent.WebApi.Controllers
         }
 
         // DELETE api/<controller>/5
-        [HttpDelete("{id}")]
+        [HttpDelete("{key}")]
         public async Task<IActionResult> Delete(string key)
         {
             return Ok(await Mediator.Send(new DeleteToDoListByIdCommand { Key = key }));
