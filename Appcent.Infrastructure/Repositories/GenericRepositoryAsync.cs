@@ -25,12 +25,12 @@ namespace Appcent.Infrastructure.Repositories
             return null;
 
         }
-        public async Task<T> AddAsync(T entity)
+        public async Task<string> AddAsync(T entity)
         {
             var key = Guid.NewGuid().ToString();
             var collection = await _bucket.DefaultCollectionAsync();
             await collection.InsertAsync<T>(key, entity);
-            return entity;
+            return key;
         }
 
         public virtual async Task UpdateAsync(T entity)

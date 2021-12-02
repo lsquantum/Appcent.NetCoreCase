@@ -29,8 +29,8 @@ namespace Appcent.Application.Features.ToDoLists.Commands.CreateToDoList
         public async Task<Response<string>> Handle(CreateToDoListCommand request, CancellationToken cancellationToken)
         {
             var toDoList = _mapper.Map<ToDoList>(request);
-            await _toDoListRepository.AddAsync(toDoList);
-            return new Response<string>("Test");
+            var key = await _toDoListRepository.AddAsync(toDoList);
+            return new Response<string>($"New ToDo object added with key:{key}");
         }
     }
 }

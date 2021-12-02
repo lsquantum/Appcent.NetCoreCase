@@ -51,6 +51,7 @@ namespace Appcent.WebApi
             }
             app.UseRouting();
             app.UseSwaggerExtension();
+            app.UseErrorHandlingMiddleware();
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>

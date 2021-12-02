@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Appcent.WebApi.Middlewares;
+using Microsoft.AspNetCore.Builder;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,11 @@ namespace Appcent.WebApi.Extensions
                 c.DisplayRequestDuration();
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Appcent.WebApi");
             });
+        }
+
+        public static void UseErrorHandlingMiddleware(this IApplicationBuilder app)
+        {
+            app.UseMiddleware<ErrorHandlerMiddleware>();
         }
     }
 }
