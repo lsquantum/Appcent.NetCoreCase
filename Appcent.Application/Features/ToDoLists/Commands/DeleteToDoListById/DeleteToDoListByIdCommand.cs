@@ -25,7 +25,7 @@ namespace Appcent.Application.Features.ToDoLists.Commands.DeleteToDoListById
             {
                 var toDoList = await _toDoListRepository.GetByIdAsync(command.Key);
                 if (toDoList == null) throw new ApiException($"ToDoList Not Found with Key:{command.Key}");
-                await _toDoListRepository.DeleteAsync(toDoList);
+                await _toDoListRepository.DeleteAsync(command.Key);
                 return new Response<string>($"ToDo object deleted with Key:{command.Key}");
             }
         }

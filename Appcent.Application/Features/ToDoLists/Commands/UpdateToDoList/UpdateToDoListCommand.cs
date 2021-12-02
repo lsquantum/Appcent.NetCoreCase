@@ -32,7 +32,7 @@ namespace Appcent.Application.Features.ToDoLists.Commands.UpdateToDoList
                 {
                     toDoList.TaskName = command.TaskName;
                     toDoList.TaskStatus = command.TaskStatus;
-                    await _toDoListRepository.UpdateAsync(toDoList);
+                    await _toDoListRepository.UpdateAsync(command.Key, toDoList);
                     return new Response<string>($"ToDo object with Key:{command.Key} successfully updated.");
                 }
             }

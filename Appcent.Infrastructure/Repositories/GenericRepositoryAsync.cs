@@ -16,14 +16,21 @@ namespace Appcent.Infrastructure.Repositories
         {
             _bucket = bucketProvider.GetBucketAsync().GetAwaiter().GetResult();
         }
-        public virtual async Task<T> GetByIdAsync(string id)
+        public virtual async Task<T> GetByIdAsync(string key)
         {
-            return null;
+            var collection = await _bucket.DefaultCollectionAsync();
+            var result = await collection.GetAsync(key);
+            return result.ContentAs<T>();
         }
-        public async Task<IList<T>> GetAllAsync(string type)
+        public async Task<IList<T>> GetAllAsync()
         {
-            return null;
-
+            var queryResult = await _bucket.Cluster.QueryAsync<T>($"SELECT t.* FROM `default` t WHERE t.type='{nameof(T)}'");
+            IAsyncEnumerable<T> rows = queryResult.Rows;
+            List<T> data = new();
+            await foreach (var row in rows) {
+                data.Add(row);
+            }
+            return data;
         }
         public async Task<string> AddAsync(T entity)
         {
@@ -32,14 +39,15 @@ namespace Appcent.Infrastructure.Repositories
             await collection.InsertAsync<T>(key, entity);
             return key;
         }
-
-        public virtual async Task UpdateAsync(T entity)
+        public virtual async Task UpdateAsync(string key, T entity)
         {
-            return;
+            var collection = await _bucket.DefaultCollectionAsync();
+            await collection.ReplaceAsync<T>(key, entity);
         }
-        public virtual async Task DeleteAsync(T entity)
+        public virtual async Task DeleteAsync(string key)
         {
-            return;
+            var collection = await _bucket.DefaultCollectionAsync();
+            await collection.RemoveAsync(key);
         }
     }
 }

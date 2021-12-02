@@ -1,4 +1,5 @@
 ﻿using Appcent.Application.Features.ToDoLists.Commands.CreateToDoList;
+using Appcent.Application.Features.ToDoLists.Queries.GetAllToDoLists;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,6 @@ namespace Appcent.Application.Mappings
             //ToDoList Mapping
             CreateMap<CreateToDoListCommand, Entity.ToDoList>();
             CreateMap<Entity.ToDoList, GetAllToDoListsViewModel>().ReverseMap();
-            CreateMap<GetAllProductsQuery, GetAllProductsParameter>();
         }
     }
 }
