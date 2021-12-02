@@ -17,8 +17,4 @@
     <ProjectReference Include="..\Appcent.Domain\Appcent.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\Users\" />
-  </ItemGroup>
-
 </Project>
