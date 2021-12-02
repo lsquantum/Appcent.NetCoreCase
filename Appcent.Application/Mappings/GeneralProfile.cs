@@ -15,6 +15,8 @@ namespace Appcent.Application.Mappings
         {
             //ToDoList Mapping
             CreateMap<CreateToDoListCommand, Entity.ToDoList>();
+            CreateMap<Entity.ToDoList, GetAllToDoListsViewModel>().ReverseMap();
+            CreateMap<GetAllProductsQuery, GetAllProductsParameter>();
         }
     }
 }
