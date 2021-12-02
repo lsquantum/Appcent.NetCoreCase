@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Appcent.Application", "Appc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Appcent.Infrastructure", "Appcent.Infrastructure\Appcent.Infrastructure.csproj", "{588F0193-DEB5-433C-BF18-FDCCA23890B7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Appcent.WebApi", "Appcent.WebApi\Appcent.WebApi.csproj", "{AA8DE42B-BF6B-49B2-BF2B-19DD9BBA47E4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{588F0193-DEB5-433C-BF18-FDCCA23890B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{588F0193-DEB5-433C-BF18-FDCCA23890B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{588F0193-DEB5-433C-BF18-FDCCA23890B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA8DE42B-BF6B-49B2-BF2B-19DD9BBA47E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA8DE42B-BF6B-49B2-BF2B-19DD9BBA47E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA8DE42B-BF6B-49B2-BF2B-19DD9BBA47E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA8DE42B-BF6B-49B2-BF2B-19DD9BBA47E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -43,6 +49,7 @@ Global
 		{5C228665-CDB9-4A91-BD5C-5D4DE26CA00C} = {5BC3C389-B19E-438F-AE0F-445A3A30A3AA}
 		{24FEF19F-E5BD-468A-93B0-EECAFF848B72} = {5BC3C389-B19E-438F-AE0F-445A3A30A3AA}
 		{588F0193-DEB5-433C-BF18-FDCCA23890B7} = {6A6047E4-3597-44B8-AB99-AC415A9FB6DA}
+		{AA8DE42B-BF6B-49B2-BF2B-19DD9BBA47E4} = {EC2AE0EF-4D2A-496F-B874-275FA280CB29}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2F2B33C0-01A5-4419-9680-F05CBFC60190}
