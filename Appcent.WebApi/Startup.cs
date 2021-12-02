@@ -34,7 +34,7 @@ namespace Appcent.WebApi
             services.AddSwaggerExtension();
             services.AddControllers();
             services.AddControllersExtension();
-            services.AddScoped<IAuthenticatedUserService, AuthenticatedUserService>();
+            //services.AddScoped<IAuthenticatedUserService, AuthenticatedUserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
