@@ -20,7 +20,7 @@ namespace Appcent.Infrastructure.Repositories
         {
             return null;
         }
-        public async Task<IList<T>> GetAllAsync()
+        public async Task<IList<T>> GetAllAsync(string type)
         {
             return null;
 
