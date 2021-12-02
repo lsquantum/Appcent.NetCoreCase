@@ -8,7 +8,7 @@ namespace Appcent.Application.Interfaces
 {
     public interface IGenericRepositoryAsync<T> where T : class
     {
-        Task<T> GetByIdAsync(int id);
+        Task<T> GetByIdAsync(string id);
         Task<IList<T>> GetAllAsync();
         Task<T> AddAsync(T entity);
         Task UpdateAsync(T entity);
