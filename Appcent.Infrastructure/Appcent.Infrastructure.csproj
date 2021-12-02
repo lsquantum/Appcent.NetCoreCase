@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Couchbase.Extensions.DependencyInjection" Version="3.2.0" />
+    <PackageReference Include="CouchbaseNetClient" Version="3.2.4" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Appcent.Application\Appcent.Application.csproj" />
   </ItemGroup>
 

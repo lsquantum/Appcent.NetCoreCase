@@ -1,4 +1,6 @@
 ﻿using Appcent.Application.Interfaces;
+using Couchbase;
+using Couchbase.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +11,10 @@ namespace Appcent.Infrastructure.Repositories
 {
     public class GenericRepositoryAsync<T> : IGenericRepositoryAsync<T> where T : class
     {
-        public GenericRepositoryAsync()
+        private readonly IBucket _bucket;
+        public GenericRepositoryAsync(INamedBucketProvider bucketProvider)
         {
-
+            _bucket = bucketProvider.GetBucketAsync().GetAwaiter().GetResult();
         }
         public virtual async Task<T> GetByIdAsync(int id)
         {
