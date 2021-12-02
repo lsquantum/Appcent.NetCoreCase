@@ -1,3 +1,6 @@
+using Appcent.Application;
+using Appcent.Infrastructure;
+using Appcent.WebApi.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -15,9 +18,10 @@ namespace Appcent.WebApi
 {
     public class Startup
     {
+        public IConfiguration _config { get; }
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            _config = configuration;
         }
 
         public IConfiguration Configuration { get; }
@@ -25,12 +29,12 @@ namespace Appcent.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddApplicationLayer();
+            services.AddInfrastructure(_config);
+            services.AddSwaggerExtension();
             services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Appcent.WebApi", Version = "v1" });
-            });
+            services.AddControllersExtension();
+            //services.AddScoped<IAuthenticatedUserService, AuthenticatedUserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,14 +43,16 @@ namespace Appcent.WebApi
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Appcent.WebApi v1"));
             }
-
+            else
+            {
+                app.UseExceptionHandler("/Error");
+                app.UseHsts();
+            }
             app.UseRouting();
-
+            app.UseSwaggerExtension();
+            app.UseAuthentication();
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
