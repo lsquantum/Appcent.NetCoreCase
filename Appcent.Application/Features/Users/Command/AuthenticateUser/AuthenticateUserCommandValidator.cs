@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Appcent.Application.Features.Users.Command.CreateUser
+namespace Appcent.Application.Features.Users.Command.AuthenticateUser
 {
-    class AuthenticateUserCommand
+    class AuthenticateUserCommandValidator
     {
     }
 }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Appcent.Application.Features.Users.Command.CreateUser
+namespace Appcent.Application.Features.Users.Command.RegisterUser
 {
-    class RegisterUserCommand
+    class RegisterUserCommandValidator
     {
     }
 }
