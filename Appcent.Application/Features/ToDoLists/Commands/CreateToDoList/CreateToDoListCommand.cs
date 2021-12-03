@@ -20,15 +20,18 @@ namespace Appcent.Application.Features.ToDoLists.Commands.CreateToDoList
     {
         private readonly IToDoListRepositoryAsync _toDoListRepository;
         private readonly IMapper _mapper;
-        public CreateToDoListCommandHandler(IToDoListRepositoryAsync toDoListRepository, IMapper mapper)
+        private readonly IAuthenticatedUserService _user;
+        public CreateToDoListCommandHandler(IToDoListRepositoryAsync toDoListRepository, IMapper mapper, IAuthenticatedUserService user)
         {
             _toDoListRepository = toDoListRepository;
             _mapper = mapper;
+            _user = user;
         }
 
         public async Task<Response<string>> Handle(CreateToDoListCommand request, CancellationToken cancellationToken)
         {
             var toDoList = _mapper.Map<ToDoList>(request);
+            toDoList.UserId = _user.UserId;
             var key = await _toDoListRepository.AddAsync(toDoList);
             return new Response<string>($"New ToDo object added with key:{key}");
         }

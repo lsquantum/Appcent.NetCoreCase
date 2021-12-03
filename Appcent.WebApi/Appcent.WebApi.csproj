@@ -16,4 +16,7 @@
     <ProjectReference Include="..\Appcent.Infrastructure\Appcent.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\" />
+  </ItemGroup>
 </Project>
