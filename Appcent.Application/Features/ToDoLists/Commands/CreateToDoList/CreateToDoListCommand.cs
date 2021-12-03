@@ -30,9 +30,11 @@ namespace Appcent.Application.Features.ToDoLists.Commands.CreateToDoList
 
         public async Task<Response<string>> Handle(CreateToDoListCommand request, CancellationToken cancellationToken)
         {
+            var objectId = Guid.NewGuid().ToString();
             var toDoList = _mapper.Map<ToDoList>(request);
+            toDoList.ObjectId = objectId;
             toDoList.UserId = _user.UserId;
-            var key = await _toDoListRepository.AddAsync(toDoList);
+            var key = await _toDoListRepository.AddAsync(objectId, toDoList);
             return new Response<string>($"New ToDo object added with key:{key}");
         }
     }

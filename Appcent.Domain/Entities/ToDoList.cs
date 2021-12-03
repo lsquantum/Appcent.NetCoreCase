@@ -9,6 +9,7 @@ namespace Appcent.Domain.Entities
     public enum Status { InProgress, Done, Postponed, Cancel }
     public class ToDoList
     {
+        public string ObjectId { get; set; }
         public string TaskName { get; set; }
         public Status TaskStatus { get; set; } = Status.InProgress;
         public DateTime Created { get; set; } = DateTime.Now;

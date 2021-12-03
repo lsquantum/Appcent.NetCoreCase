@@ -32,8 +32,10 @@ namespace Appcent.Application.Features.Users.Command.RegisterUser
 
         public async Task<Response<string>> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
         {
+            var objectId = Guid.NewGuid().ToString();
             var user = _mapper.Map<User>(request);
-            var key = await _userRepository.AddAsync(user);
+            user.ObjectId = objectId;
+            var key = await _userRepository.AddAsync(objectId, user);
             return new Response<string>($"New User object added with key:{key}");
         }
     }

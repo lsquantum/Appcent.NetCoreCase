@@ -10,7 +10,7 @@ namespace Appcent.Application.Interfaces
     {
         Task<T> GetByIdAsync(string key);
         Task<IList<T>> GetAllAsync();
-        Task<string> AddAsync(T entity);
+        Task<string> AddAsync(string key, T entity);
         Task UpdateAsync(string key, T entity);
         Task DeleteAsync(string key);
     }
