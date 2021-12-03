@@ -66,7 +66,7 @@ cbq -u Admin -p 123456 -e "http://localhost:8091" --script="CREATE PRIMARY INDEX
 ```
 
 Now you should see following screen.
-![CBDB](./doc/images/couıchbasedb.PNG)
+![CBDB](./doc/images/couchbasedb.PNG)
 
 Now get my project from docker hub app and run
 ```PowerShell
