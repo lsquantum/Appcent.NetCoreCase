@@ -21,13 +21,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Appcent.WebApi", "Appcent.W
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Appcent.Test", "Appcent.Test\Appcent.Test.csproj", "{54C218B1-C276-479C-A701-A1B5B18C611C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{078D1547-095B-4D9C-B381-F37B67D26157}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{FE17E962-925F-423E-85CD-6BCC8D4614B3}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\..\Desktop\doc\images\project_layers.PNG = ..\..\..\Desktop\doc\images\project_layers.PNG
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -64,7 +57,6 @@ Global
 		{588F0193-DEB5-433C-BF18-FDCCA23890B7} = {6A6047E4-3597-44B8-AB99-AC415A9FB6DA}
 		{AA8DE42B-BF6B-49B2-BF2B-19DD9BBA47E4} = {EC2AE0EF-4D2A-496F-B874-275FA280CB29}
 		{54C218B1-C276-479C-A701-A1B5B18C611C} = {EE3F7BA1-1C98-4BC4-8363-FB889AAACB06}
-		{FE17E962-925F-423E-85CD-6BCC8D4614B3} = {078D1547-095B-4D9C-B381-F37B67D26157}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2F2B33C0-01A5-4419-9680-F05CBFC60190}
