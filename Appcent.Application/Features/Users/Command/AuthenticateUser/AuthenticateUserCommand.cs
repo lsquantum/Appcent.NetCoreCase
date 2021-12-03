@@ -17,6 +17,14 @@ namespace Appcent.Application.Features.Users.Command.AuthenticateUser
         public string Email { get; set; }
         public string Password { get; set; }
     }
+    public class AuthenticationResponse
+    {
+        public string UserName { get; set; }
+        public string Email { get; set; }
+        public string JWToken { get; set; }
+        public string RefreshToken { get; set; }
+        public DateTime RefreshTokenExpiration { get; set; }
+    }
     public class AuthenticateUserCommandHandler : IRequestHandler<AuthenticateUserCommand, Response<string>>
     {
         private readonly IUserRepositoryAsync _userRepository;

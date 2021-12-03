@@ -14,5 +14,9 @@ namespace Appcent.Infrastructure.Repositories
         public UserRepositoryAsync(INamedBucketProvider bucketProvider) : base(bucketProvider)
         {
         }
+        public Task<bool> IsUniqueEmailAsync(string email)
+        {
+            return null;
+        }
     }
 }

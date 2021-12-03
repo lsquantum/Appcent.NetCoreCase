@@ -9,5 +9,6 @@ namespace Appcent.Application.Interfaces
 {
     public interface IUserRepositoryAsync : IGenericRepositoryAsync<User>
     {
+        Task<bool> IsUniqueEmailAsync(string email);
     }
 }
