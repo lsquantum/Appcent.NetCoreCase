@@ -22,7 +22,7 @@ namespace Appcent.Infrastructure.Repositories
             var result = await collection.GetAsync(key);
             return result.ContentAs<T>();
         }
-        public async Task<IList<T>> GetAllAsync()
+        public virtual async Task<IList<T>> GetAllAsync()
         {
             var queryResult = await _bucket.Cluster.QueryAsync<T>($"SELECT t.* FROM `default` t WHERE t.type='{typeof(T).Name}'");
             IAsyncEnumerable<T> rows = queryResult.Rows;
@@ -32,7 +32,7 @@ namespace Appcent.Infrastructure.Repositories
             }
             return data;
         }
-        public async Task<string> AddAsync(string key, T entity)
+        public virtual async Task<string> AddAsync(string key, T entity)
         {
             var collection = await _bucket.DefaultCollectionAsync();
             await collection.InsertAsync<T>(key, entity);
