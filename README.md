@@ -20,6 +20,7 @@ Technology Stack:
 # Install Project From Docker Hub
 
 You can get project from Docker Hub. Do the following steps;
+
 Create a network for couchbasedb and for our app
 ```PowerShell
 docker network create testnetwork
@@ -29,7 +30,7 @@ Run couchbasedb in your network
 ```PowerShell
 docker run -d --name couchbasedb -p 8091-8096:8091-8096 -p 11210-11211:11210-11211 --network=testnetwork couchbase
 ```
-Lets set up couchbasedb manually this time using "couchbase-cli"
+Lets set up couchbasedb manually using "couchbase-cli"
 
 Go to your docker containers and find container named 'couchbasedb' that we just created and open CLI. First we are going to create our cluster
 
@@ -60,7 +61,9 @@ Now get my project from docker hub app and run
 ```PowerShell
 docker run --rm -p 8787:80 -e Couchbase:ConnectionString=couchbasedb --network=testnetwork aserefoglu/appcent:v1
 ```
-:)
+Now app should be running at http://localhost:8787/swagger/index.html
+
+Enjoy :)
 
 # Install (Optinal)
 
