@@ -34,6 +34,8 @@ namespace Appcent.WebApi
             services.AddSwaggerExtension();
             services.AddControllers();
             services.AddControllersExtension();
+            services.AddAuthorizationExtension();
+            services.AddAuthenticationExtension(_config);
             //services.AddScoped<IAuthenticatedUserService, AuthenticatedUserService>();
         }
 

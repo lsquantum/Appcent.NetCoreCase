@@ -1,8 +1,15 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Appcent.Application.Wrappers;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Appcent.WebApi.Extensions
@@ -59,6 +66,14 @@ namespace Appcent.WebApi.Extensions
             });
         }
 
+        public static void AddControllersExtension(this IServiceCollection services)
+        {
+            services.AddControllers()
+                .AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.PropertyNamingPolicy = null;
+                });
+        }
         public static void AddAuthorizationExtension(this IServiceCollection services)
         {
             services.AddAuthorization(options =>
@@ -66,13 +81,53 @@ namespace Appcent.WebApi.Extensions
                 options.AddPolicy("AdminPolicy", policy => policy.RequireClaim("Test", "TestValue"));
             });
         }
-
-        public static void AddControllersExtension(this IServiceCollection services)
+        public static void AddAuthenticationExtension(this IServiceCollection services, IConfiguration config)
         {
-            services.AddControllers()
-                .AddJsonOptions(options =>
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+                .AddJwtBearer(o =>
                 {
-                    options.JsonSerializerOptions.PropertyNamingPolicy = null;
+                    o.RequireHttpsMetadata = false;
+                    o.SaveToken = false;
+                    o.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ClockSkew = TimeSpan.Zero,
+                        ValidIssuer = config["JWTSettings:Issuer"],
+                        ValidAudience = config["JWTSettings:Audience"],
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["JWTSettings:Key"]))
+                    };
+                    o.Events = new JwtBearerEvents()
+                    {
+                        OnAuthenticationFailed = c =>
+                        {
+                            c.NoResult();
+                            c.Response.StatusCode = 500;
+                            c.Response.ContentType = "text/plain";
+                            return c.Response.WriteAsync(c.Exception.ToString());
+                        },
+                        OnChallenge = context =>
+                        {
+                            context.HandleResponse();
+                            context.Response.StatusCode = 401;
+                            context.Response.ContentType = "application/json";
+                            var result = JsonConvert.SerializeObject(new Response<string>("You are not Authorized"));
+                            return context.Response.WriteAsync(result);
+                        },
+                        OnForbidden = context =>
+                        {
+                            context.Response.StatusCode = 403;
+                            context.Response.ContentType = "application/json";
+                            var result = JsonConvert.SerializeObject(new Response<string>("You are not authorized to access this resource"));
+                            return context.Response.WriteAsync(result);
+                        },
+                    };
                 });
         }
     }
