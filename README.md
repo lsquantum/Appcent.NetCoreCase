@@ -17,19 +17,7 @@ Technology Stack:
 
 ![Project Structure](./doc/images/project_layers.PNG)
 
-# Install (Optinal)
-
-You will need to setup Couchbase Server for project to work. First install Docker and make sure it's working properly. ([See](https://www.docker.com/get-started)) If you already have installed on your pc;
-
-```PowerShell
-docker run -d --name db -p 8091-8096:8091-8096 -p 11210-11211:11210-11211 couchbase
-```
-
-After that you need to setup a cluster. You can check offical document ([here](https://docs.couchbase.com/server/current/install/getting-started-docker.html))
-
-Go to Appcent.NetCoreCase/Appcent.WebApi/appsettings.json configure your connection settings. After your configuration, start the project and you should see SwaggerUI screen.
-
-# Install From Docker Hub
+# Install Project From Docker Hub
 
 You can get project from Docker Hub. Do the following steps;
 Create a network for couchbasedb and for our app
@@ -74,6 +62,18 @@ docker run --rm -p 8787:80 -e Couchbase:ConnectionString=couchbasedb --network=t
 ```
 :)
 
+# Install (Optinal)
+
+You will need to setup Couchbase Server for project to work. First install Docker and make sure it's working properly. ([See](https://www.docker.com/get-started)) If you already have installed on your pc;
+
+```PowerShell
+docker run -d --name db -p 8091-8096:8091-8096 -p 11210-11211:11210-11211 couchbase
+```
+
+After that you need to setup a cluster. You can check offical document ([here](https://docs.couchbase.com/server/current/install/getting-started-docker.html))
+
+Go to Appcent.NetCoreCase/Appcent.WebApi/appsettings.json configure your connection settings. After your configuration, start the project and you should see SwaggerUI screen.
+
 # Next Step
 
 Now you need to create an account to use to project. Otherwise you will get 401 error.
@@ -104,4 +104,8 @@ Get the token from the response and authorize swagger now you should be good.
 ![Task-2](./doc/images/create-task-response.PNG)
 ![Task-3](./doc/images/getall-todolist-byuser.PNG)
 ![Task-4](./doc/images/getall-todo.PNG)
+
+# Test Project
+
+![Test](./doc/images/test.PNG)
 
