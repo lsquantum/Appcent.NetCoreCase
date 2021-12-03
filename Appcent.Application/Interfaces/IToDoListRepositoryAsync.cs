@@ -9,5 +9,6 @@ namespace Appcent.Application.Interfaces
 {
     public interface IToDoListRepositoryAsync : IGenericRepositoryAsync<ToDoList>
     {
+        Task<IList<ToDoList>> GetAllByUserIdAsync(string id);
     }
 }

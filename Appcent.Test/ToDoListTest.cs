@@ -1,6 +1,3 @@
-using Appcent.Application.Exceptions;
-using Appcent.Application.Features.ToDoLists.Commands.CreateToDoList;
-using Appcent.Application.Features.ToDoLists.Commands.DeleteToDoListById;
 using Appcent.Application.Features.ToDoLists.Queries.GetAllToDoLists;
 using Appcent.Application.Features.ToDoLists.Queries.GetToDoListById;
 using Appcent.Application.Interfaces;
@@ -14,7 +11,6 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using static Appcent.Application.Features.ToDoLists.Commands.DeleteToDoListById.DeleteToDoListByIdCommand;
 using static Appcent.Application.Features.ToDoLists.Queries.GetToDoListById.GetToDoListByIdQuery;
 
 namespace Appcent.Test
