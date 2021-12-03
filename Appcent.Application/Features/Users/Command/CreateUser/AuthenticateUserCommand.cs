@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Appcent.Application.Features.Users.Command.CreateUser
 {
-    class CreateUserCommand
+    class AuthenticateUserCommand
     {
     }
 }
