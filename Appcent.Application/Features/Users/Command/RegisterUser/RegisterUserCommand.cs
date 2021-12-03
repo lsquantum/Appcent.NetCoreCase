@@ -1,5 +1,6 @@
 ﻿using Appcent.Application.Interfaces;
 using Appcent.Application.Wrappers;
+using Appcent.Domain.Entities;
 using AutoMapper;
 using MediatR;
 using System;
@@ -30,7 +31,9 @@ namespace Appcent.Application.Features.Users.Command.RegisterUser
 
         public async Task<Response<string>> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
         {
-            return null;
+            var user = _mapper.Map<User>(request);
+            var key = await _userRepository.AddAsync(user);
+            return new Response<string>($"New User object added with key:{key}");
         }
     }
 }

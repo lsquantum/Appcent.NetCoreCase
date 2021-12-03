@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Appcent.Application.Features.Users.Command.AuthenticateUser;
+using Appcent.Application.Features.Users.Command.RegisterUser;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;

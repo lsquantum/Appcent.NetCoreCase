@@ -23,6 +23,7 @@ namespace Appcent.Infrastructure
 
             services.AddTransient(typeof(IGenericRepositoryAsync<>), typeof(GenericRepositoryAsync<>));
             services.AddTransient<IToDoListRepositoryAsync, ToDoListRepositoryAsync>();
+            services.AddTransient<IUserRepositoryAsync, UserRepositoryAsync>();
 
             #endregion
         }
