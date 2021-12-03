@@ -3,6 +3,7 @@ using Appcent.Application.Features.ToDoLists.Commands.DeleteToDoListById;
 using Appcent.Application.Features.ToDoLists.Commands.UpdateToDoList;
 using Appcent.Application.Features.ToDoLists.Queries.GetAllToDoLists;
 using Appcent.Application.Features.ToDoLists.Queries.GetToDoListById;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace Appcent.WebApi.Controllers
 {
+    [Authorize]
     public class ToDoListController : BaseApiController
     {
         // GET: api/<controller>

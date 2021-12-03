@@ -28,6 +28,7 @@ namespace Appcent.Application.Features.Users.Command.RegisterUser
             RuleFor(p => p.Email)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
                 .NotNull()
+                .EmailAddress()
                 .MustAsync(IsUniqueBarcode).WithMessage("{PropertyName} already exists.");            
             
             RuleFor(p => p.Password)

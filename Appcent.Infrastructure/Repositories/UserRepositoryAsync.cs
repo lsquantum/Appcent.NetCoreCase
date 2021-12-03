@@ -31,5 +31,19 @@ namespace Appcent.Infrastructure.Repositories
             else
                 return true;
         }
+        public async Task<User> GetUserAsync(string email, string password)
+        {
+            var queryResult = await _bucket.Cluster.QueryAsync<User>($"SELECT t.* FROM `default` t WHERE t.type='User' AND t.email='{email}' AND t.`password`='{password}'");
+            IAsyncEnumerable<User> rows = queryResult.Rows;
+            List<User> data = new();
+            await foreach (var row in rows)
+            {
+                data.Add(row);
+            }
+            if (data.Count > 0)
+                return data[0];
+            else
+                return null;
+        }
     }
 }
